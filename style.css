@@ -34,7 +34,7 @@ header{
 }
 
 .head-left img{
-    width: 40px;
+    width: 140px;
     height: 40px;
     margin-right: 20px;
 }
@@ -64,7 +64,7 @@ header{
     padding-left: 25px;
 }
 
-hero-section{
+.hero-section{
 
     position: relative;
     width: 100%;
@@ -260,7 +260,7 @@ hero-section{
     transition: 0.5s;
 }
 
-card h1{
+.card h1{
     position: absolute;
     margin: 0;
     top: 10px;
@@ -274,7 +274,7 @@ card h1{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: animate-gradient 2.5s linear infinite;
-    max-width: 250px;
+    max-width: 300px;
 }
 
 .card p{
