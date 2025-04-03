@@ -1,65 +1,118 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" , charset="UTF-8">
     <title>AIML Website</title>
     <link rel="stylesheet" href="gstyle.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.12.1/gsap.min.js"></script>
 </head>
 
 <body>
-    <div class="logo">
-        <a href="#">BTI</a>
-    </div>
-    <div class="sidebar">
-        <div class="sidebar-item">
-            <p id="header">neuro<br/>hohograph</p>
-            <p>ADD MORE TEXT HERE LATER</p>
-       </div>
-        <div class="sidebar-item">
-            <P>more text here eshwar</P>
+
+    <div class="container">
+        <div class="gallery">
+            <div class="block block-1">
+                <img src="./img/1.jpg" alt="Image">
+            </div>
+            <div class="block block-2">
+                <img src="./img/2.jpg" alt="Image">
+            </div>
+            <div class="block block-3">
+                <img src="./img/3.jpg" alt="Image">
+
+            </div>
+            <div class="block block-4">
+                <img src="./img/4.jpg" alt="Image"/>
+
+            </div>
+            <div class="block block-5">
+                <img src="./img/5.jpg" alt="Image"/>
+
+            </div>
+            <div class="block block-6">
+                <img src="./img/20.jpg" alt="Image">
+            </div>
+            <div class="block block-7">
+                <img src="./img/21.jpg" alt="Image">
+            </div>
+            <div class="block block-8">
+                <img src="./img/23.jpg" alt="Image">
+            </div>
+            <div class="block block-9"> <img src="./img/24.jpg" alt="Image"></div>
+            <div class="block block-10"> <img src="./img/24.jpg" alt="Image"></div>
+            <div class="block block-11"><img src="./img/26.jpg" alt="Image"></div>
+            <div class="block block-12"><img src="./img/3.jpg" alt="Image"></div>
+            <div class="block block-13"><img src="./img/4.jpg" alt="Image"></div>
+            <div class="block block-14"><img src="./img/5.jpg" alt="Image"></div>
+            <div class="block block-15"><img src="./img/6.jpg" alt="Image"></div>
+            <div class="block block-16"><img src="./img/7.jpg" alt="Image"></div>
+            <div class="block block-17"><img src="./img/9.jpg" alt="Image"></div>
+            <div class="block block-18"><img src="./img/gallery-1.webp" alt="Image"></div>
+            <div class="block block-19"></div>
+            <div class="block block-20"></div>
         </div>
     </div>
-    <div class="slider">
-        <div class="slider-wrapper">
-            <div class="slide">
-                <img src="./img/6.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/2.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/20.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/21.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/23.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/24.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/26.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/3.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/4.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/5.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/6.jpg" alt=""/>
-            </div>
-            <div class="slide">
-                <img src="./img/7.jpg" alt=""/>
-            </div>
-        </div>
-    </div>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
-    <script src="gscript.js"></script>
+    <script>
+        const cursor = document.querySelector(".cursor");
+        document.body.addEventListener("mousemove",onmousemove);
+
+        function onmousemove(e){
+            gsap.to{cursor,0.0125,{
+                x: e.pageX - 5,
+                y: e.pageY - 5,
+            }};
+
+            let blocks = document.querySelectorAll(".block");
+            let duration = 0.25;
+            let stagger = duration;
+            let repeatDelay = 0.075 * (blocks.length - 1)
+            gsap.from(".blocks",5,{
+                scale:0,
+                top:"50%",
+                left:"50%",
+                transform:"translateZ(-200px)",
+                stagger:{
+                    each:duration,
+                    repeat:-1,
+                    repeatDelay:repeatDelay,
+                },
+            });
+            let previousGif = null;
+
+            blocks.forEach((blocks) => {
+                block.addEventListener("click",(event) =>{
+                    const x = event.clientX;
+                    const y =event.clientY;
+
+                    if (previousGif){
+                        previousGif.remove();
+                    }
+                    const gif = document.createElement("img");
+                    gif.scr = "./explosion.gif";
+                    gif.style.position = "absolute";
+                    gif.style.left = `$(x-10)px`;
+                    gif.style.top=`$(y-10)px`;
+                    gif.style.transform = `scale(2.5)`;
+                    gif.style.pointerEvents = "none";
+
+                    document.body.appendChild(gif);
+
+                    setTimeout(()=>{
+                        gif.src="";
+                    },500)
+
+                    previousGif = gif;
+
+                    block.style.display = "none";
+                    setTimeout(()=>{
+                        block.style.display="block";
+                    },5000);
+                });
+            });
+        }
+    </script>
 </body>
+
+</html>
